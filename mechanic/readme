@@ -1,0 +1,82 @@
+Projeto de Gerenciamento de Oficina Mecânica
+Descrição
+
+Este projeto simula o sistema de gerenciamento de uma oficina mecânica, onde clientes podem registrar veículos, solicitar serviços e comprar peças para reparo. O sistema organiza as informações em várias tabelas inter-relacionadas no banco de dados, permitindo o gerenciamento eficiente de mecânicos, equipes de mecânicos, carros, peças e ordens de serviço.
+Estrutura do Banco de Dados
+
+A estrutura do banco de dados é organizada em várias tabelas interconectadas. Abaixo, está uma visão geral das tabelas principais e suas relações:
+1. Clients (clients)
+
+    Armazena informações sobre os clientes, seja pessoa física (PF) ou jurídica (PJ).
+    Relacionamento:
+        Tabelas client_pf e client_pj fazem referência a esta tabela com mais detalhes dependendo do tipo de cliente.
+
+2. Client PF (Pessoa Física) (client_pf)
+
+    Contém informações específicas sobre clientes do tipo pessoa física, como nome completo e CPF.
+    Relacionamento:
+        Relacionada à tabela clients através de id_client.
+
+3. Client PJ (Pessoa Jurídica) (client_pj)
+
+    Contém informações específicas sobre clientes do tipo pessoa jurídica, como nome social e CNPJ.
+    Relacionamento:
+        Relacionada à tabela clients através de id_client.
+
+4. Mechanic Team (Equipe de Mecânicos) (mechanic_team)
+
+    Armazena informações sobre as equipes de mecânicos.
+    Relacionamento:
+        Cada mecânico está associado a uma equipe (mechanic).
+        Cada veículo (car) tem uma equipe de mecânicos responsável.
+
+5. Mechanics (Mecânicos) (mechanic)
+
+    Contém informações sobre os mecânicos, incluindo nome, endereço e especialização (ex.: motor, suspensão, freios).
+    Relacionamento:
+        Cada mecânico pertence a uma equipe (mechanic_team).
+
+6. Cars (Veículos) (car)
+
+    Armazena informações sobre os veículos, como modelo, placa e VIN (número de identificação do veículo).
+    Relacionamento:
+        Cada veículo é associado a um cliente (clients).
+        Cada veículo tem uma equipe de mecânicos responsável.
+
+7. Service Orders (Ordens de Serviço) (service_order)
+
+    Contém informações sobre as ordens de serviço solicitadas pelos clientes, como a data de fechamento e a data de início do serviço.
+    Relacionamento:
+        Cada ordem de serviço está associada a uma equipe de mecânicos (mechanic_team).
+        As ordens de serviço podem envolver partes e serviços específicos.
+
+8. Parts (Peças) (part)
+
+    Contém informações sobre as peças necessárias para os serviços realizados na oficina, como nome e preço.
+    Relacionamento:
+        As peças podem ser relacionadas a ordens de serviço através da tabela order_requires_part.
+
+9. Services (Serviços) (service)
+
+    Armazena informações sobre os serviços oferecidos pela oficina, como nome e preço.
+    Relacionamento:
+        Os serviços podem ser relacionados a ordens de serviço através da tabela order_requires_service.
+
+10. Order Requires Part (Ordens que requerem Peças) (order_requires_part)
+
+    Relaciona ordens de serviço a peças necessárias para o serviço.
+    Relacionamento:
+        Tabela de relacionamento entre as tabelas service_order e part.
+
+11. Order Requires Service (Ordens que requerem Serviços) (order_requires_service)
+
+    Relaciona ordens de serviço aos serviços realizados.
+    Relacionamento:
+        Tabela de relacionamento entre as tabelas service_order e service.
+
+Relacionamentos Principais
+
+    Clientes e Seus Veículos: Cada cliente pode ter vários veículos. A tabela car faz referência à tabela clients.
+    Equipes de Mecânicos e Mecânicos: Cada equipe de mecânicos pode ter vários mecânicos. A tabela mechanic faz referência à tabela mechanic_team.
+    Ordens de Serviço e Mecânicos: Cada ordem de serviço é atribuída a uma equipe de mecânicos específica. A tabela service_order faz referência à tabela mechanic_team.
+    Ordens de Serviço e Peças/Serviços: As ordens de serviço podem envolver diferentes peças e serviços, sendo as relações gerenciadas pelas tabelas order_requires_part e order_requires_service.
