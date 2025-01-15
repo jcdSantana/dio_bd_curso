@@ -1,0 +1,37 @@
+Projeto de Gestão de Dados de Colaboradores e Departamentos
+
+Este repositório contém o projeto de Gestão de Dados de Colaboradores e Departamentos, desenvolvido para fornecer um sistema de gerenciamento de informações essenciais de uma organização. O objetivo do projeto é criar um banco de dados relacional que contenha tabelas com dados sobre os empregados, seus supervisores, departamentos e os projetos nos quais estão envolvidos.
+Objetivo do Projeto
+
+O sistema tem como objetivo:
+
+    Organizar os dados de colaboradores, departamentos e suas relações dentro de uma empresa.
+    Permitir a execução de consultas e relatórios sobre a estrutura organizacional, como, por exemplo, o número de colaboradores por gerente.
+    Garantir a integridade e consistência dos dados por meio de chaves primárias e estrangeiras.
+
+Tecnologias Utilizadas
+
+Este projeto foi inicialmente planejado para ser implementado utilizando o Azure, uma plataforma de nuvem da Microsoft. No entanto, devido a questões técnicas relacionadas à configuração e integração com as ferramentas desejadas, não foi possível utilizar o Azure neste caso.
+
+Por isso, a decisão foi utilizar o MySQL como sistema de gerenciamento de banco de dados, por ser uma plataforma estável, de código aberto e amplamente utilizada em projetos de dados relacionais. O MySQL foi a escolha ideal para esta implementação, pois oferece alta performance e a flexibilidade necessária para atender aos requisitos do projeto.
+Estrutura do Banco de Dados
+
+O banco de dados foi projetado para gerenciar as seguintes informações:
+
+    Tabela employee: Armazena os dados dos colaboradores, incluindo nome, número de segurança social (SSN), supervisor e salário.
+    Tabela departament: Contém os dados dos departamentos, como o nome do departamento, número e o gerente responsável.
+    Tabela dept_locations: Registra os locais dos departamentos.
+    Tabela project: Armazena informações sobre os projetos em que os colaboradores estão envolvidos.
+    Tabela works_on: Relaciona os colaboradores aos projetos, incluindo as horas trabalhadas.
+    Tabela dependent: Armazena os dados de dependentes dos colaboradores.
+
+Principais Funcionalidades Implementadas
+
+    Estrutura Relacional: Implementação de tabelas com chaves primárias e estrangeiras para garantir a integridade referencial.
+    Consultas Avançadas: Criação de consultas que permitem, por exemplo, calcular o número de colaboradores por gerente.
+    Restrição de Dados: Definição de restrições, como verificação de salários e relacionamentos de dependentes.
+    Integridade de Dados: Definição de regras para garantir que os dados inseridos nas tabelas respeitem as condições de negócio da organização.
+
+Motivo da Alteração na Plataforma
+
+Embora o Azure fosse a plataforma originalmente planejada para este projeto, não foi possível utilizá-lo devido a problemas técnicos de configuração e integração com as ferramentas necessárias. Como alternativa, o projeto foi realizado diretamente utilizando MySQL, uma plataforma que oferece alta performance e confiabilidade, além de ser de fácil implementação e uso em ambientes locais e em servidores de banco de dados.
